@@ -1,1 +1,0 @@
-'The weather in Gujrat is Sunny +34øC.' 
