@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple TODO App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #todo-form {
+            margin-bottom: 20px;
+        }
+        #todo-input {
+            padding: 8px;
+            width: 200px;
+        }
+        #add-btn {
+            padding: 8px 14px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #todo-list {
+            list-style-type: none;
+            padding: 0;
+            width: 320px;
+        }
+        .todo-item {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .delete-btn {
+            background: #ff4d4d;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>TODO App</h1>
+    <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Enter a new task..." required />
+        <button type="submit" id="add-btn">Add</button>
+    </form>
+    <ul id="todo-list"></ul>
+    <script>
+        const form = document.getElementById('todo-form');
+        const input = document.getElementById('todo-input');
+        const list = document.getElementById('todo-list');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const text = input.value.trim();
+            if(text === "") return;
+
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.innerHTML = `${text} <button class="delete-btn">Delete</button>`;
+
+            li.querySelector('.delete-btn').onclick = function() {
+                li.remove();
+            };
+            list.appendChild(li);
+            input.value = '';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+'def sum_between_two_numbers(start, end):\n    return sum(range(start, end + 1))\n\n# Example usage\nstart, end = 1, 5\nprint(f"Sum between {start} and {end} is: {sum_between_two_numbers(start, end)}")' 
